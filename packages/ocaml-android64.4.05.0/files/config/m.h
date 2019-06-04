@@ -4,7 +4,7 @@
 #define SIZEOF_PTR 8
 #define SIZEOF_SHORT 2
 #define SIZEOF_LONGLONG 8
-#define INT64_LITERAL 8
+#define INT64_LITERAL(s) s ## LL
 #define ARCH_INT64_TYPE long long
 #define ARCH_UINT64_TYPE unsigned long long
 #define ARCH_INT64_PRINTF_FORMAT "I64"
