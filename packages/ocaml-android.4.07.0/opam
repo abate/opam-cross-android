@@ -1,5 +1,5 @@
 opam-version: "1"
 maintainer: "whitequark@whitequark.org"
 depends: [
-  ( "ocaml-android32" {= "4.05.0"} | "ocaml-android64" {= "4.05.0"} )
+  ( "ocaml-android32" {= "4.07.0"} | "ocaml-android64" {= "4.07.0"} )
 ]
