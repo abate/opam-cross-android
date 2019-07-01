@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 build: [
   ["sh" "-c" "echo \"arch: \\\"${ARCH}\\\"\" >>conf-android.config"]
