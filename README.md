@@ -19,7 +19,7 @@ Installation
 
 Add this repository to OPAM:
 
-    opam repository add android git://github.com/whitequark/opam-cross-android
+    opam repository add android git://github.com/ossdev07/opam-cross-android
 
 On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
 
