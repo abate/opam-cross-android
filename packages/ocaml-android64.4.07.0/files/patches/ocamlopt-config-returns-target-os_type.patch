@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 1b4bec8e6..386836168 100644
+index 1b4bec8e6..7989d3a4d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -363,6 +363,7 @@ utils/config.ml: utils/config.mlp config/Makefile Makefile
