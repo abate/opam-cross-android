@@ -6,7 +6,7 @@ index 1b4bec8e6..386836168 100644
             $(call SUBST,SYSTEM) \
             $(call SUBST,SYSTHREAD_SUPPORT) \
             $(call SUBST,TARGET) \
-+            $(call SUBST,OCAML_OS_TYPE) \
++           $(call SUBST,OCAML_OS_TYPE) \
             $(call SUBST,WITH_FRAME_POINTERS) \
             $(call SUBST,WITH_PROFINFO) \
             $(call SUBST,WITH_SPACETIME) \
