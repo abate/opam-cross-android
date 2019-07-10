@@ -1,0 +1,43 @@
+diff -r -u a/configure b/configure
+--- a/configure
++++ b/configure
+@@ -2130,6 +2130,7 @@
+ config WITH_CPLUGINS "$with_cplugins"
+ config WITH_FPIC "$with_fpic"
+ config TARGET "$target"
++config OCAML_OS_TYPE "$ostype"
+ config HOST "$host"
+ if [ "$ostype" = Cygwin ]; then
+   config DIFF "diff -q --strip-trailing-cr"
+diff -r -u a/Makefile b/Makefile
+--- a/Makefile
++++ b/Makefile
+@@ -363,6 +363,7 @@
+ 	    $(call SUBST,SYSTEM) \
+ 	    $(call SUBST,SYSTHREAD_SUPPORT) \
+ 	    $(call SUBST,TARGET) \
++	    $(call SUBST,OCAML_OS_TYPE) \
+ 	    $(call SUBST,WITH_FRAME_POINTERS) \
+ 	    $(call SUBST,WITH_PROFINFO) \
+ 	    $(call SUBST,WITH_SPACETIME) \
+diff -r -u a/utils/config.mlp b/utils/config.mlp
+--- a/utils/config.mlp
++++ b/utils/config.mlp
+@@ -141,7 +141,7 @@
+ let target = "%%TARGET%%"
+ 
+ let default_executable_name =
+-  match Sys.os_type with
++  match "%%OCAML_OS_TYPE%%" with
+     "Unix" -> "a.out"
+   | "Win32" | "Cygwin" -> "camlprog.exe"
+   | _ -> "camlprog"
+@@ -184,7 +184,7 @@
+   p "ext_asm" ext_asm;
+   p "ext_lib" ext_lib;
+   p "ext_dll" ext_dll;
+-  p "os_type" Sys.os_type;
++  p "os_type" "%%OCAML_OS_TYPE%%";
+   p "default_executable_name" default_executable_name;
+   p_bool "systhread_supported" systhread_supported;
+   p "host" host;
