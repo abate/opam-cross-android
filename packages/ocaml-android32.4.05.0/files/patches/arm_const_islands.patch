@@ -102,7 +102,7 @@ diff --git a/testsuite/tests/asmcomp/Makefile b/testsuite/tests/asmcomp/Makefile
 index abcb87296..7b714c897 100644
 --- a/testsuite/tests/asmcomp/Makefile
 +++ b/testsuite/tests/asmcomp/Makefile
-@@ -49,7 +49,7 @@ lexcmm.ml: lexcmm.mll
+@@ -55,7 +55,7 @@ lexcmm.ml: lexcmm.mll
  	@$(OCAMLLEX) -q lexcmm.mll
  
  MLCASES=optargs staticalloc bind_tuples is_static register_typing \
