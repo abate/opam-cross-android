@@ -4,6 +4,8 @@ patches: [
   "patches/ocamlmklib.patch"
   "patches/pic.patch"
   "patches/ocamlopt-config-returns-target-os_type.patch"
+  "patches/fix-debug-tag-size.patch"
+  "patches/ostype-fix.patch"
 ]
 substs: ["android.conf" "config/Makefile"]
 build: [
