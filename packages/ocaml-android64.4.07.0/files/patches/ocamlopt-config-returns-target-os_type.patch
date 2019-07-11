@@ -36,7 +36,7 @@ diff --git a/Makefile b/Makefile
 index 1b4bec8e6..7989d3a4d 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -363,6 +363,7 @@ utils/config.ml: utils/config.mlp config/Makefile Makefile
+@@ -363,6 +363,7 @@ $(call SUBST,WINDOWS_UNICODE) \ 
             $(call SUBST,SYSTEM) \
             $(call SUBST,SYSTHREAD_SUPPORT) \
             $(call SUBST,TARGET) \
