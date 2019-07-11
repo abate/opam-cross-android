@@ -1,0 +1,35 @@
+diff --git a/byterun/caml/misc.h b/byterun/caml/misc.h
+index e953540f9..e047be7aa 100644
+--- a/byterun/caml/misc.h
++++ b/byterun/caml/misc.h
+@@ -257,7 +257,7 @@ char *caml_aligned_malloc (asize_t bsize, int, void **);
+ 
+ #ifdef DEBUG
+ #ifdef ARCH_SIXTYFOUR
+-#define Debug_tag(x) (0xD700D7D7D700D6D7ul \
++#define Debug_tag(x) (INT64_LITERAL(0xD700D7D7D700D6D7u) \
+                       | ((uintnat) (x) << 16) \
+                       | ((uintnat) (x) << 48))
+ #else
+@@ -291,7 +291,7 @@ char *caml_aligned_malloc (asize_t bsize, int, void **);
+ /* Note: the first argument is in fact a [value] but we don't have this
+    type available yet because we can't include [mlvalues.h] in this file.
+ */
+-extern void caml_set_fields (intnat v, unsigned long, unsigned long);
++extern void caml_set_fields (intnat v, uintnat, uintnat);
+ #endif /* DEBUG */
+ 
+ 
+diff --git a/byterun/misc.c b/byterun/misc.c
+index 9d33ac118..0a1ed62ca 100644
+--- a/byterun/misc.c
++++ b/byterun/misc.c
+@@ -41,7 +41,7 @@ int caml_failed_assert (char * expr, char * file, int line)
+   abort();
+ }
+ 
+-void caml_set_fields (value v, unsigned long start, unsigned long filler)
++void caml_set_fields (value v, uintnat start, uintnat filler)
+ {
+   mlsize_t i;
+   for (i = start; i < Wosize_val (v); i++){

@@ -1,0 +1,46 @@
+diff --git a/Makefile b/Makefile
+index 92556ef43..2467235ab 100644
+--- a/Makefile
++++ b/Makefile
+@@ -341,6 +341,7 @@ utils/config.ml: utils/config.mlp config/Makefile
+ 	    -e 's|%%WITH_FRAME_POINTERS%%|$(WITH_FRAME_POINTERS)|' \
+ 	    -e 's|%%WITH_PROFINFO%%|$(WITH_PROFINFO)|' \
+ 	    -e 's|%%WITH_SPACETIME%%|$(WITH_SPACETIME)|' \
++	    -e 's|%%OCAML_OS_TYPE%%|$(OCAML_OS_TYPE)|' \
+ 	    $< > $@
+ 
+ ifeq "$(UNIX_OR_WIN32)" "unix"
+diff --git a/configure b/configure
+index de87d2ff1..f7dbc49b4 100755
+--- a/configure
++++ b/configure
+@@ -2080,6 +2080,7 @@ echo "PROFINFO_WIDTH=$profinfo_width" >> Makefile
+ echo "WITH_CPLUGINS=$with_cplugins" >> Makefile
+ echo "WITH_FPIC=$with_fpic" >> Makefile
+ echo "TARGET=$target" >> Makefile
++echo "OCAML_OS_TYPE=$ostype" >> Makefile
+ echo "HOST=$host" >> Makefile
+ if [ "$ostype" = Cygwin ]; then
+   echo "DIFF=diff -q --strip-trailing-cr" >>Makefile
+diff --git a/utils/config.mlp b/utils/config.mlp
+index 28bff73a8..136ac1903 100644
+--- a/utils/config.mlp
++++ b/utils/config.mlp
+@@ -119,7 +119,7 @@ let host = "%%HOST%%"
+ let target = "%%TARGET%%"
+ 
+ let default_executable_name =
+-  match Sys.os_type with
++  match "%%OCAML_OS_TYPE%%" with
+     "Unix" -> "a.out"
+   | "Win32" | "Cygwin" -> "camlprog.exe"
+   | _ -> "camlprog"
+@@ -157,7 +157,7 @@ let print_config oc =
+   p "ext_asm" ext_asm;
+   p "ext_lib" ext_lib;
+   p "ext_dll" ext_dll;
+-  p "os_type" Sys.os_type;
++  p "os_type" "%%OCAML_OS_TYPE%%";
+   p "default_executable_name" default_executable_name;
+   p_bool "systhread_supported" systhread_supported;
+   p "host" host;
