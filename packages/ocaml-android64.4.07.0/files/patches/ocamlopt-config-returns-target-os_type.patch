@@ -1,3 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 1b4bec8e6..3ece3d26b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -368,6 +368,7 @@ utils/config.ml: utils/config.mlp config/Makefile Makefile
+ 	    $(call SUBST,WITH_SPACETIME) \
+ 	    $(call SUBST,ENABLE_CALL_COUNTS) \
+ 	    $(call SUBST,FLAT_FLOAT_ARRAY) \
++	    $(call SUBST,OCAML_OS_TYPE) \
+ 	    $< > $@
+ 
+ ifeq "$(UNIX_OR_WIN32)" "unix"
 diff --git a/configure b/configure
 index 1316b3c1e..5881fb4ee 100755
 --- a/configure
@@ -16,7 +28,7 @@ index 729e13783..73ccb9d5f 100644
 +++ b/utils/config.mlp
 @@ -141,7 +141,7 @@ let host = "%%HOST%%"
  let target = "%%TARGET%%"
-
+ 
  let default_executable_name =
 -  match Sys.os_type with
 +  match "%%OCAML_OS_TYPE%%" with
@@ -32,15 +44,3 @@ index 729e13783..73ccb9d5f 100644
    p "default_executable_name" default_executable_name;
    p_bool "systhread_supported" systhread_supported;
    p "host" host;
-diff --git a/Makefile b/Makefile
-index 1b4bec8e6..7989d3a4d 100644
---- a/Makefile
-+++ b/Makefile
-@@ -363,6 +363,7 @@ $(call SUBST,WINDOWS_UNICODE) \ 
-            $(call SUBST,SYSTEM) \
-            $(call SUBST,SYSTHREAD_SUPPORT) \
-            $(call SUBST,TARGET) \
-+           $(call SUBST,OCAML_OS_TYPE) \
-            $(call SUBST,WITH_FRAME_POINTERS) \
-            $(call SUBST,WITH_PROFINFO) \
-            $(call SUBST,WITH_SPACETIME) \
