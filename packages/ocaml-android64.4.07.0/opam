@@ -3,7 +3,7 @@ maintainer: "whitequark@whitequark.org"
 patches: [
   "patches/ocamlmklib.patch"
   "patches/pic.patch"
-  "patches/ocamlopt-config-returns-target-os_type.patch"
+  "patches/x.patch"
   "patches/fix-debug-tag-size.patch"
   "patches/ostype-fix.patch"
 ]
