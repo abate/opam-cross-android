@@ -1,0 +1,25 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/ocamlmklib.patch"
+  "patches/arm_const_islands.patch"
+  "patches/pic.patch"
+  "patches/arm_s.patch"
+]
+substs: ["android.conf" "config/Makefile"]
+build: [
+  [make "world" "opt" "install"]
+  ["./install.sh" "%{prefix}%"]
+]
+remove: [
+  ["./remove.sh" "%{prefix}%"]
+]
+depends: [
+  "ocaml" {"4.07.0" & arch = "x86" | "4.07.0+32bit"}
+  "conf-android"
+  "ocamlfind" {>= "1.5.4"}
+]
+depopts: [
+  "conf-flambda-android"
+]
+#available: [ (ocaml-version = "4.07.0" & arch = "x86") | compiler = "4.07.0+32bit" ]

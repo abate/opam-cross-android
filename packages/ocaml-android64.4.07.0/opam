@@ -1,0 +1,28 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/ocamlmklib.patch"
+  "patches/ocamlopt-config-returns-target-os_type.patch"
+  "patches/fix-debug-tag-size.patch"
+  "patches/ostype-fix.patch"
+]
+substs: ["android.conf" "config/Makefile"]
+build: [
+  [make "world" "opt" "install"]
+  ["./install.sh" "%{prefix}%"]
+]
+remove: [
+  ["./remove.sh" "%{prefix}%"]
+]
+depends: [
+  "ocaml" {"4.07.0" & arch = "x86_64" | "4.07.0"}
+  "conf-android"
+  "ocamlfind" {>= "1.5.4"}
+]
+depopts: [
+  "conf-flambda-android"
+]
+conflicts: [
+  "ocaml-android32"
+]
+#available: [ (ocaml-version = "4.07.0" & arch = "x86_64") | compiler = "4.07.0" ]
