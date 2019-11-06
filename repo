@@ -1,2 +1,3 @@
 opam-version: "2.0"
-stamp: "80856806"
+archive-mirrors: "cache"
+stamp: "7d0122fe"
