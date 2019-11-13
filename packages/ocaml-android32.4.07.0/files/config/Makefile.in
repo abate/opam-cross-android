@@ -43,6 +43,7 @@ MKSHAREDLIBRPATH=-Wl,-rpath,
 NATDYNLINKOPTS=-Wl,-E
 SYSLIB=-l$(1)
 #ml let syslib x = "-l"^x;;
+OUTPUTOBJ=-o $(EMPTY)
 
 ### How to build a static library
 MKLIB=%{conf-android:toolpref}%ar rc $(1) $(2); %{conf-android:toolpref}%ranlib $(1)
