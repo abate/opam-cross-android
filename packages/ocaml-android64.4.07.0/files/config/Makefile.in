@@ -93,3 +93,4 @@ WITH_OCAMLDOC=ocamldoc
 ASM_CFI_SUPPORTED=false
 WITH_FRAME_POINTERS=false
 TARGET=%{conf-android:triple}%
+AWK=awk
