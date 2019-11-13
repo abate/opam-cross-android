@@ -8,7 +8,10 @@ patches: [
 ]
 substs: ["android.conf" "config/Makefile"]
 build: [
-  [make "world" "opt" "install"]
+  [make "world" "opt"]
+]
+install: [
+  [make "install"]
   ["./install.sh" "%{prefix}%"]
 ]
 remove: [
