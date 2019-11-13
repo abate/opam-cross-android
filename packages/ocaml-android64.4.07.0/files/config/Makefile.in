@@ -29,6 +29,7 @@ TK_DEFS=
 TK_LINK=
 LIBBFD_LINK=
 BYTECC=%{conf-android:toolpref}%gcc %{conf-android:cflags}% -O2 -fPIC
+CC=%{conf-android:toolpref}%gcc %{conf-android:cflags}%
 BYTECCCOMPOPTS=-fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
 BYTECCDBGCOMPOPTS=-g
 NAME_OBJ_FLAG=-o
