@@ -28,6 +28,7 @@ X11_LINK=not found
 TK_DEFS=
 TK_LINK=
 LIBBFD_LINK=
+LIBBFD_INCLUDE=
 BYTECC=%{conf-android:toolpref}%gcc %{conf-android:cflags}% -O2 -fPIC
 CC=%{conf-android:toolpref}%gcc %{conf-android:cflags}%
 BYTECCCOMPOPTS=-fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
@@ -44,6 +45,7 @@ NATDYNLINKOPTS=-Wl,-E
 SYSLIB=-l$(1)
 #ml let syslib x = "-l"^x;;
 OUTPUTOBJ=-o $(EMPTY)
+OUTPUTEXE=-o $(EMPTY)
 
 ### How to build a static library
 MKLIB=%{conf-android:toolpref}%ar rc $(1) $(2); %{conf-android:toolpref}%ranlib $(1)
@@ -94,3 +96,15 @@ ASM_CFI_SUPPORTED=false
 WITH_FRAME_POINTERS=false
 TARGET=%{conf-android:triple}%
 AWK=awk
+
+FLAMBDA=%{conf-flambda-android:installed?true:false}%
+WITH_FLAMBDA_INVARIANTS=false
+FORCE_SAFE_STRING=false
+DEFAULT_SAFE_STRING=true
+WINDOWS_UNICODE=0
+AFL_INSTRUMENT=false
+MAX_TESTSUITE_DIR_RETRIES=0
+FLAT_FLOAT_ARRAY=true
+ENABLE_CALL_COUNTS=true
+WITH_PROFINFO=false
+PROFILING=true
