@@ -476,11 +476,10 @@ opt.opt:
 	$(MAKE) ocaml
 	$(MAKE) opt-core
 	$(MAKE) ocamlc.opt
-	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC) ocamltest
+	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC)
 	$(MAKE) ocamlopt.opt
 	$(MAKE) otherlibrariesopt
-	$(MAKE) ocamllex.opt ocamltoolsopt ocamltoolsopt.opt $(OCAMLDOC_OPT) \
-	  ocamltest.opt
+	$(MAKE) ocamllex.opt ocamltoolsopt ocamltoolsopt.opt $(OCAMLDOC_OPT)
 
 # Core bootstrapping cycle
 .PHONY: coreboot
@@ -510,7 +509,7 @@ coreboot:
 all: runtime
 	$(MAKE) coreall
 	$(MAKE) ocaml
-	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC) ocamltest
+	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC)
 
 # Bootstrap and rebuild the whole system.
 # The compilation of ocaml will fail if the runtime has changed.
