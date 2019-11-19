@@ -3,6 +3,8 @@ maintainer: "whitequark@whitequark.org"
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/android-sysroot"]
   ["env" "OCAMLFIND_TOOLCHAIN=android" "ocaml" "setup.ml" "-build"]
+]
+install: [
   ["env" "OCAMLFIND_TOOLCHAIN=android" "ocaml" "setup.ml" "-install"]
 ]
 remove: [["ocamlfind" "-toolchain" "android" "remove" "re"]]
