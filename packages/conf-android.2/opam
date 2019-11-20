@@ -6,10 +6,11 @@ build: [
   ["sh" "-c" "echo \"system: \\\"${SYSTEM}\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"level: \\\"${LEVEL-29}\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"triple: \\\"${TRIPLE}\\\"\" >>conf-android.config"]
+  ["sh" "-c" "echo \"toolchainllvm: \\\"%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/bin/\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"toolchain: \\\"%{prefix}%/android-ndk/toolchains/${TOOLCHAIN}/prebuilt/%{os}%-%{arch}%/bin/\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"toolpref: \\\"%{prefix}%/android-ndk/toolchains/${TOOLCHAIN}/prebuilt/%{os}%-%{arch}%/bin/${TRIPLE}-\\\"\" >>conf-android.config"]
-  ["sh" "-c" "echo \"cflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -I%{prefix}%/android-ndk/sysroot/usr/include -L%{prefix}%sysroot/usr/lib/ -I%{prefix}%/android-ndk/sources/cxx-stl/llvm-libc++/include -L%{prefix}%/android-ndk/sources/cxx-stl/llvm-libc++/libs -I%{prefix}%/android-sysroot/include -L%{prefix}%/android-sysroot/lib\\\"\" >>conf-android.config"]
-  ["sh" "-c" "echo \"ldflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -L%{prefix}%/android-ndk/lib -L%{prefix}%/android-ndk/sources/cxx-stl/llvm-libc++/libs -L%{prefix}%/android-sysroot/lib\\\"\" >>conf-android.config"]
+  ["sh" "-c" "echo \"cflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -I%{prefix}%/android-ndk/sysroot/usr/include -I%{prefix}%/android-ndk/sysroot/usr/include/${ARCH}-linux-androideabi -I%{prefix}%/android-ndk/sources/cxx-stl/llvm-libc++/include -I%{prefix}%/android-sysroot/include \\\"\" >>conf-android.config"]
+  ["sh" "-c" "echo \"ldflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -L%{prefix}%/android-ndk/lib -L%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/lib -L%{prefix}%/android-ndk/sources/cxx-stl/llvm-libc++/libs -L%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/sysroot/usr/lib/${TRIPLE} -L%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/sysroot/usr/lib/${TRIPLE}/${LEVEL} -L%{prefix}%/android-sysroot/lib\\\"\" >>conf-android.config"]
 ]
 depends: [
   ("android-ndk-linux" {>= "20b"} | "android-ndk-darwin" {>= "20b"})

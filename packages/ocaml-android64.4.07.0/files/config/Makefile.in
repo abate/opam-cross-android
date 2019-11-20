@@ -29,8 +29,8 @@ TK_DEFS=
 TK_LINK=
 LIBBFD_LINK=
 LIBBFD_INCLUDE=
-BYTECC=%{conf-android:toolchain}%/clang --target=%{conf-android:triple}%%{conf-android:level}% %{conf-android:cflags}% -O2 -fPIC
-CC=%{conf-android:toolchain}%/clang --target=%{conf-android:triple}%%{conf-android:level}% %{conf-android:cflags}%
+BYTECC=%{conf-android:toolchainllvm}%/clang --target=%{conf-android:triple}%%{conf-android:level}% %{conf-android:cflags}% %{conf-android:ldflags}% -O2 -fPIC
+CC=%{conf-android:toolchainllvm}%/clang --target=%{conf-android:triple}%%{conf-android:level}% %{conf-android:cflags}% %{conf-android:ldflags}%
 BYTECCCOMPOPTS=-fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
 BYTECCDBGCOMPOPTS=-g
 NAME_OBJ_FLAG=-o
