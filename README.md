@@ -28,7 +28,7 @@ The of the installed compiler must match the version of the cross-compiler:
 
 Configure the compiler for ARM:
 
- opam update android && ARCH=arm SUBARCH=armv7 SYSTEM=linux_eabi CCARCH=arm TOOLCHAIN=arm-linux-androideabi-4.9 TRIPLE=arm-linux-androideabi TRIPLESUB=armv7a-linux-androideabi LEVEL=29 opam reinstall conf-android && opam install ocaml-android64
+opam update android && ARCH=arm SUBARCH=armv7 SYSTEM=linux_eabi CCARCH=arm TOOLCHAIN=arm-linux-androideabi-4.9 TRIPLE=arm-linux-androideabi TRIPLESUB=armv7a-linux-androideabi LEVEL=29 opam reinstall conf-android && opam install ocaml-android64
 
     ARCH=arm SUBARCH=armv7 SYSTEM=linux_eabi \
       CCARCH=arm TOOLCHAIN=arm-linux-androideabi-4.9 \

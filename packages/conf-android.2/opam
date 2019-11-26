@@ -9,7 +9,7 @@ build: [
   ["sh" "-c" "echo \"triplesub: \\\"${TRIPLESUB}\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"toolchain: \\\"%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/bin\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"cflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -I%{prefix}%/android-ndk/sysroot/usr/include/${TRIPLE} -I%{prefix}%/android-ndk/sysroot/usr/include \\\"\" >>conf-android.config"]
-  ["sh" "-c" "echo \"ldflags: \\\" -L%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/sysroot/usr/lib/${TRIPLE} \\\"\" >>conf-android.config"]
+  ["sh" "-c" "echo \"ldflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -L%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/sysroot/usr/lib/${TRIPLE} \\\"\" >>conf-android.config"]
 ]
 depends: [
   ("android-ndk-linux" {>= "20b"} | "android-ndk-darwin" {>= "20b"})
