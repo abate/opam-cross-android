@@ -8,7 +8,7 @@ build: [
   ["sh" "-c" "echo \"triple: \\\"${TRIPLE}\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"triplesub: \\\"${TRIPLESUB}\\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"toolchain: \\\"%{prefix}%/android-ndk/toolchains/llvm/prebuilt/%{os}%-%{arch}%/bin\\\"\" >>conf-android.config"]
-  ["sh" "-c" "echo \"cflags: \\\"-I%{prefix}%/android-ndk/sysroot/usr/include \\\"\" >>conf-android.config"]
+  ["sh" "-c" "echo \"cflags: \\\"--sysroot %{prefix}%/android-ndk/platforms/android-${LEVEL}/arch-${CCARCH} -I%{prefix}%/android-ndk/sysroot/usr/include \\\"\" >>conf-android.config"]
   ["sh" "-c" "echo \"ldflags: \\\" \\\"\" >>conf-android.config"]
 ]
 depends: [
