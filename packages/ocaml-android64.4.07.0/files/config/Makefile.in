@@ -42,14 +42,19 @@ SUPPORTS_SHARED_LIBRARIES=true
 SHAREDCCCOMPOPTS=-fPIC
 MKSHAREDLIBRPATH=-Wl,-rpath,
 NATDYNLINKOPTS=-Wl,-E
+
 SYSLIB=-l$(1)
 #ml let syslib x = "-l"^x;;
+
+### How to build a static library
+MKLIB=rm -f $(1) && %{conf-android:toolchain}%/%{conf-android:triple}%-ar rc $(1) $(2) && %{conf-android:toolchain}%/%{conf-android:triple}%-ranlib $(1)
+#ml let mklib out files opts =      (* "" *)
+#ml   Printf.sprintf "%{conf-android:toolchain}%/%{conf-android:triple}%-ar rc %s %s %s && %{conf-android:toolchain}%/%{conf-android:triple}%-ranlib %s"
+#ml                  out opts files out;;
+
 OUTPUTOBJ=-o $(EMPTY)
 OUTPUTEXE=-o $(EMPTY)
 
-### How to build a static library
-MKLIB=%{conf-android:toolchain}%/%{conf-android:triple}%-ar rc $(1) $(2); %{conf-android:toolchain}%/%{conf-android:triple}%-ranlib $(1)
-#ml let mklib out files opts = Printf.sprintf "%{conf-android:toolpref}%ar rc %s %s %s; %{conf-android:toolpref}%ranlib %s" out opts files out;;
 ARCH=%{conf-android:arch}%
 MODEL=%{conf-android:subarch}%
 SYSTEM=%{conf-android:system}%
